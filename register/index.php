@@ -17,7 +17,7 @@ if(isset($_SERVER['HTTP_API_KEY']) && $_SERVER['HTTP_API_KEY'] == 111111){
         $user_handler = new UserHandler();
         $user_data = $user_handler->register($username, $password, $email);
         
-        if($user_data !== null){
+        if($user_data == 1){
             $result = array(
                 'msg' => "Account created successfully",
                 'code' => 200
