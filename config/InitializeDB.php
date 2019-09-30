@@ -16,7 +16,9 @@ $create_auth_user_table = "CREATE TABLE `$DBName`.`auth_users`
             `verified` BOOLEAN NOT NULL DEFAULT FALSE , 
             `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
             `verified_at` TIMESTAMP NULL DEFAULT NULL , 
-            PRIMARY KEY (`id`)
+            PRIMARY KEY (`id`),
+            UNIQUE(`username`),
+            UNIQUE(`email`)
         ) ENGINE = MyISAM;";
 
 $db_handler->connect();
