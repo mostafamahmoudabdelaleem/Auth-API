@@ -23,8 +23,10 @@ class UserHandler{
                 ('$username', '$hashed_password', '$email')";
         
         $this->db_handler->connect();
-        $this->db_handler->execute_query($sql);
+        $response = $this->db_handler->execute_query($sql);
         $this->db_handler->disconnect();
+
+        return $response;
 
     }
 
