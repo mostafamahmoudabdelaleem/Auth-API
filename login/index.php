@@ -4,14 +4,20 @@ require_once '../models/user.php';
 
 
 $result = '';
-header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Origin, Content-Type, Api-Key");
+ 
 
 if(isset($_SERVER['HTTP_API_KEY']) && $_SERVER['HTTP_API_KEY'] == 111111){
 
-    if(isset($_POST['username']) && isset($_POST['password'])){
+    $data = json_decode(file_get_contents("php://input"));
+    if(isset($data->username) && isset($data->password)){
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = $data->username;
+        $password = $data->password;
 
         $user_handler = new UserHandler();
         $user_data = $user_handler->loginByUsername($username, $password);
