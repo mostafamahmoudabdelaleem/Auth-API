@@ -22,7 +22,7 @@ if(isset($_SERVER['HTTP_API_KEY']) && $_SERVER['HTTP_API_KEY'] == 111111){
         $user_handler = new UserHandler();
         $user_data = $user_handler->loginByUsername($username, $password);
         
-        if($user_data !== null){
+        if($user_data->num_rows === 1){
             $user_data = $user_data->fetch_assoc();
             $result = array(
                 'userdata'  => $user_data,
